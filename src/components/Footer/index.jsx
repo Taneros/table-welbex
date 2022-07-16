@@ -22,6 +22,7 @@ export const Footer = () => {
         <div className="col">
           <h5>Девелопер</h5>
           <span className="bar"></span>
+
           <a href="mailto:taneros@duck.com">
             <FaAt />
             Отправить Email

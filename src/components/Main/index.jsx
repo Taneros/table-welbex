@@ -32,7 +32,8 @@ export const Main = () => {
     } catch (error) {
       console.error(error)
       setError(true)
-      setTableData([...data])
+      freshData = data.slice()
+      setTableData(freshData)
     }
   }
 
