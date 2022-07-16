@@ -12,7 +12,9 @@
 
 .signup img {
   max-width: 475px;
+  width: 90%;
   border-radius: 1rem;
+  margin-bottom: 1rem;
 }
 
 .signup .right p {

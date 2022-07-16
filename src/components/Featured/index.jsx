@@ -4,12 +4,14 @@ import axios from '../../api/axios'
 import './style.css'
 import { MOCK_DATA as data } from '../../api/MOCK_DATA'
 import { randomNum, getRandomColor } from '../../utils/random'
+import { useNavigate } from 'react-router-dom'
 
 const URL = '/table'
 
 export const Featured = () => {
   const [companyData, setCompanyData] = useState([])
   const [error, setError] = useState(false)
+  const navigate = useNavigate()
 
   let freshData = []
 
@@ -41,7 +43,9 @@ export const Featured = () => {
             Runolfsson-Cremin.
           </h2>
           <p>Все виды анализа: Расстояния, Количество, Название</p>
-          <button className="btn">Узнать больше</button>
+          <button className="btn" onClick={() => navigate('/table')}>
+            Смотреть Таблицу Сейчас!
+          </button>
         </div>
         {/* Right */}
         <div className="right">

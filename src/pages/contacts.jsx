@@ -1,7 +1,8 @@
 import React from 'react'
+import { Contacts as ContactsComponent } from '../components/Contacts'
 
-const Contacts = () => {
-  return <div>Contacts</div>
+export const Contacts = () => {
+  return <ContactsComponent />
 }
 
 export default Contacts

@@ -40,7 +40,7 @@
   cursor: pointer;
 }
 
-@media screen and (max-width: 1240px) {
+@media screen and (max-width: 1280px) {
   .humburger {
     display: flex;
   }
@@ -52,7 +52,7 @@
     justify-content: start;
     top: 90px;
     right: -100%;
-    width: 50%;
+    width: 20rem;
     height: 100vh;
     transition: 0.4s;
     z-index: 2;

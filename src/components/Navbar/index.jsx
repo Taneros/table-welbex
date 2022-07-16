@@ -24,14 +24,20 @@ export const Navbar = () => {
           className={showMenu ? 'nav-menu active' : 'nav-menu'}
           onClick={handleShowMenu}
         >
-          <li className="hover:bg-gray-50" onClick={() => navigate('/')}>
+          <li
+            className="hover:bg-gray-50 cursor-pointer"
+            onClick={() => navigate('/')}
+          >
             Домой
           </li>
-          <li className="hover:bg-gray-50" onClick={() => navigate('/table')}>
+          <li
+            className="hover:bg-gray-50 cursor-pointer"
+            onClick={() => navigate('/table')}
+          >
             Таблица
           </li>
           <li
-            className="hover:bg-gray-50"
+            className="hover:bg-gray-50 cursor-pointer"
             onClick={() => navigate('/contacts')}
           >
             Контакты

@@ -87,8 +87,8 @@ export const Table = () => {
     sortBy({ sortByRow, currentPageItems, sortByRowValue }) || currentPageItems
 
   return (
-    <div className="container mx-auto px-4 sm:px-8">
-      <div className="py-8">
+    <div className="container mx-auto px-4 sm:px-8 ">
+      <div className="py-8 ">
         {error && (
           <div className="flex flex-col items-center">
             <Alert
@@ -98,7 +98,7 @@ export const Table = () => {
             />
           </div>
         )}
-        <div className="flex justify-between">
+        <div className="flex justify-between lg:flex-col lg:items-start">
           <h2 className="text-2xl font-semibold leading-tight">Таблица</h2>
           <SelectRowFilter sort={{ sortByRow, setSortByRow }} />
           <SelectValueFilter sort={{ sortByRowValue, setSortByRowValue }} />
