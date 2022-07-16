@@ -18,7 +18,7 @@ export const Table = ({ rowNames, data }) => {
       <tbody>
         {data.map((c) => {
           return (
-            <tr className="text-base" key={c.id}>
+            <tr className="text-base hover:bg-gray-50" key={c.id}>
               <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                 <div className="flex">
                   <div className="ml-3 flex flex-1 justify-start items-center">

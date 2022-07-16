@@ -7,6 +7,8 @@ import { SelectValueFilter } from '../SelectValueFilter'
 import { Search } from '../Search'
 import useDebounce from '../../utils/useDebounce'
 import { Table } from '../Common/Table'
+import { sortBy } from '../../utils/sorting'
+import { Alert } from '../Common/Alert'
 
 const URL = '/table'
 
@@ -36,12 +38,14 @@ export const Main = () => {
       console.error(error)
       setError(true)
       freshData = data.slice()
-      setTableData(freshData)
     }
   }
 
   useEffect(() => {
-    getTableData().then(() => setTableData([...freshData]))
+    getTableData().then(() => {
+      console.log(`didnt get here`)
+      setTableData([...freshData])
+    })
   }, [])
 
   // Search Table
@@ -49,11 +53,8 @@ export const Main = () => {
   useEffect(() => {
     if (debouncedSearch) {
       getTableData().then(() => {
-        console.log(`debouncedSearch`, debouncedSearch)
         const reg = new RegExp(`${debouncedSearch}`, 'ig')
-        const searchedData = freshData.filter((item) =>
-          reg.test(item.name.toLowerCase())
-        )
+        const searchedData = freshData.filter((item) => reg.test(item.name))
         if (searchedData.length > 0) return setTableData(searchedData)
         else
           setTableData([
@@ -82,44 +83,20 @@ export const Main = () => {
   const indexOfFirstItem = indexOfLastItem - itemsPerPage
   const currentPageItems = tableData.slice(indexOfFirstItem, indexOfLastItem)
 
-  let filteredTable = currentPageItems
-
   // Sorting by Rows + Value Asc / Desc
-
-  switch (sortByRow) {
-    case 1:
-      filteredTable = currentPageItems.slice().sort((a, b) => {
-        if (sortByRowValue === 0) return a.name > b.name ? 1 : -1
-        return a.name < b.name ? 1 : -1
-      })
-      break
-
-    case 2:
-      filteredTable = currentPageItems.slice().sort((a, b) => {
-        if (sortByRowValue === 0) return a.quantity - b.quantity
-        return b.quantity - a.quantity
-      })
-      break
-
-    case 3:
-      filteredTable = currentPageItems.slice().sort((a, b) => {
-        if (sortByRowValue === 0) return a.market_cap - b.market_cap
-        return b.quantity - a.quantity
-      })
-      break
-
-    default:
-      break
-  }
+  let filteredTable =
+    sortBy({ sortByRow, currentPageItems, sortByRowValue }) || currentPageItems
 
   return (
     <div className="container mx-auto px-4 sm:px-8">
       <div className="py-8">
         {error && (
           <div className="flex flex-col items-center">
-            <p className="text-red-400">Ошибка запроса к серверу!</p>
-            <p>Чтобы запустить сервер выполнить: yarn serve</p>
-            <p>Используются данные из файла.</p>
+            <Alert
+              message={`Ошибка запроса к серверу!\n
+            Чтобы запустить сервер выполнить: yarn serve.\n
+            Используются данные из файла.`}
+            />
           </div>
         )}
         <div className="flex justify-between">
@@ -134,7 +111,6 @@ export const Main = () => {
           </div>
         </div>
       </div>
-
       <Pagination pages={{ listOfPages, setCurrentPage, currentPage }} />
     </div>
   )
