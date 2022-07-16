@@ -23,11 +23,12 @@ export const Main = () => {
 
   const debouncedSearch = useDebounce(searchTable, 500)
 
+  let freshData = []
+
   const getTableData = async () => {
     try {
       const res = await axios.get(URL)
-      console.log(`res`, res.data)
-      setTableData([...res.data])
+      freshData = res.data
     } catch (error) {
       console.error(error)
       setError(true)
@@ -36,36 +37,41 @@ export const Main = () => {
   }
 
   useEffect(() => {
-    getTableData()
+    getTableData().then(() => setTableData([...freshData]))
   }, [])
 
   // Search Table
 
   useEffect(() => {
     if (debouncedSearch) {
-      console.log(`debouncedSearch`, debouncedSearch)
-      const reg = new RegExp(`${debouncedSearch}`, 'ig')
-      setTableData((prev) => {
-        const searchedData = prev.filter((item) =>
+      getTableData().then(() => {
+        console.log(`debouncedSearch`, debouncedSearch)
+        const reg = new RegExp(`${debouncedSearch}`, 'ig')
+        const searchedData = freshData.filter((item) =>
           reg.test(item.name.toLowerCase())
         )
-        if (searchedData.length > 0) return searchedData
-        console.log(`not found`)
-        return [...data]
+        if (searchedData.length > 0) return setTableData(searchedData)
+        else
+          setTableData([
+            {
+              date: '-',
+              name: 'Нет данных',
+              quantity: '-',
+              distance: '-',
+            },
+          ])
       })
-    } else setTableData([...data])
+    } else getTableData().then(() => setTableData([...freshData]))
   }, [debouncedSearch])
 
   //  Pagination Setup
 
   useEffect(() => {
-    if (data?.length) {
-      const pageArr = []
-      for (let i = 1; i <= Math.ceil(data.length / itemsPerPage); i++) {
-        pageArr.push(i)
-      }
-      setListOfPages(pageArr)
+    const pageArr = []
+    for (let i = 1; i <= Math.ceil(tableData.length / itemsPerPage); i++) {
+      pageArr.push(i)
     }
+    setListOfPages(pageArr)
   }, [tableData?.length])
 
   const indexOfLastItem = currentPage * itemsPerPage
@@ -140,34 +146,36 @@ export const Main = () => {
                 </tr>
               </thead>
               <tbody>
-                {filteredTable.map((c) => (
-                  <tr className="text-base" key={c.id}>
-                    <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                      <div className="flex">
-                        <div className="ml-3 flex flex-1 justify-start items-center">
-                          <p className="text-gray-900 white-space-no-wrap text-base">
-                            {c.date}
-                          </p>
+                {filteredTable.map((c) => {
+                  return (
+                    <tr className="text-base" key={c.id}>
+                      <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                        <div className="flex">
+                          <div className="ml-3 flex flex-1 justify-start items-center">
+                            <p className="text-gray-900 white-space-no-wrap text-base">
+                              {c.date}
+                            </p>
+                          </div>
                         </div>
-                      </div>
-                    </td>
-                    <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                      <p className="text-gray-900 white-space-no-wrap text-base">
-                        {c.name}
-                      </p>
-                    </td>
-                    <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                      <p className="text-gray-900 white-space-no-wrap text-base">
-                        {c.quantity}
-                      </p>
-                    </td>
-                    <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                      <p className="text-gray-900 white-space-no-wrap text-base">
-                        {c.distance}
-                      </p>
-                    </td>
-                  </tr>
-                ))}
+                      </td>
+                      <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                        <p className="text-gray-900 white-space-no-wrap text-base">
+                          {c.name}
+                        </p>
+                      </td>
+                      <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                        <p className="text-gray-900 white-space-no-wrap text-base">
+                          {c.quantity}
+                        </p>
+                      </td>
+                      <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                        <p className="text-gray-900 white-space-no-wrap text-base">
+                          {c.distance}
+                        </p>
+                      </td>
+                    </tr>
+                  )
+                })}
               </tbody>
             </table>
           </div>

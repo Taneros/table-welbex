@@ -3,7 +3,6 @@ import { FaAngleLeft, FaAngleRight } from 'react-icons/fa'
 import { nanoid } from 'nanoid'
 
 export const Pagination = ({ pages }) => {
-  const id = nanoid()
   const { listOfPages, setCurrentPage, currentPage } = pages
 
   const [pageNumLimit, setPageNumLimit] = useState(5)
