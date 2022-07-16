@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
 import './style.css'
 import { FaBars, FaTimes } from 'react-icons/fa'
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 export const Navbar = () => {
   const [showMenu, setShowMenu] = useState(false)
+  const navigate = useNavigate()
 
   const handleShowMenu = () => {
     setShowMenu((prev) => !prev)
@@ -23,14 +24,17 @@ export const Navbar = () => {
           className={showMenu ? 'nav-menu active' : 'nav-menu'}
           onClick={handleShowMenu}
         >
-          <li className="hover:bg-gray-50">
-            <Link to="/">Домой</Link>
+          <li className="hover:bg-gray-50" onClick={() => navigate('/')}>
+            Домой
           </li>
-          <li className="hover:bg-gray-50">
-            <Link to="/table">Таблица</Link>
+          <li className="hover:bg-gray-50" onClick={() => navigate('/table')}>
+            Таблица
           </li>
-          <li className="hover:bg-gray-50">
-            <Link to="/contacts">Контакты</Link>
+          <li
+            className="hover:bg-gray-50"
+            onClick={() => navigate('/contacts')}
+          >
+            Контакты
           </li>
         </ul>
 

@@ -6,7 +6,7 @@ import { SelectRowFilter } from '../SelectRowFilter'
 import { SelectValueFilter } from '../SelectValueFilter'
 import { Search } from '../Search'
 import useDebounce from '../../utils/useDebounce'
-import { Table } from '../Common/Table'
+import { Table as CommonTable } from '../Common/Table'
 import { sortBy } from '../../utils/sorting'
 import { Alert } from '../Common/Alert'
 
@@ -14,7 +14,7 @@ const URL = '/table'
 
 const rowNames = ['Дата', 'Название', 'Количество', 'Расстояние']
 
-export const Main = () => {
+export const Table = () => {
   const [tableData, setTableData] = useState([])
 
   const [currentPage, setCurrentPage] = useState(1)
@@ -43,7 +43,6 @@ export const Main = () => {
 
   useEffect(() => {
     getTableData().then(() => {
-      console.log(`didnt get here`)
       setTableData([...freshData])
     })
   }, [])
@@ -107,7 +106,7 @@ export const Main = () => {
         </div>
         <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
           <div className="inline-block min-w-full shadow-md rounded-lg overflow-hidden">
-            <Table rowNames={rowNames} data={filteredTable} />
+            <CommonTable rowNames={rowNames} data={filteredTable} />
           </div>
         </div>
       </div>
