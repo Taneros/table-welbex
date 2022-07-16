@@ -24,7 +24,7 @@ export const Navbar = () => {
             <Link to="/">Домой</Link>
           </li>
           <li>
-            <Link to="/Main">Таблица</Link>
+            <Link to="/table">Таблица</Link>
           </li>
           <li>
             <Link to="/contacts">Контакты</Link>
