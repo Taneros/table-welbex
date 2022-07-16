@@ -31,12 +31,6 @@ export const Featured = () => {
     })
   }, [])
 
-  console.log(`quotes`, companyData)
-
-  if (error) return null
-
-  console.log(`getRandomColor`, getRandomColor())
-
   return (
     <div className="featured">
       <div className="container">
