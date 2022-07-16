@@ -19,14 +19,17 @@ export const Navbar = () => {
         <h2>
           Table<span className="primary">WelbeX</span>
         </h2>
-        <ul className={showMenu ? 'nav-menu active' : 'nav-menu'}>
-          <li>
+        <ul
+          className={showMenu ? 'nav-menu active' : 'nav-menu'}
+          onClick={handleShowMenu}
+        >
+          <li className="hover:bg-gray-50">
             <Link to="/">Домой</Link>
           </li>
-          <li>
+          <li className="hover:bg-gray-50">
             <Link to="/table">Таблица</Link>
           </li>
-          <li>
+          <li className="hover:bg-gray-50">
             <Link to="/contacts">Контакты</Link>
           </li>
         </ul>

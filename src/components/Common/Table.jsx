@@ -18,8 +18,8 @@ export const Table = ({ rowNames, data }) => {
       <tbody>
         {data.map((c) => {
           return (
-            <tr className="text-base hover:bg-gray-50" key={c.id}>
-              <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+            <tr className="text-base bg-white hover:bg-gray-50" key={c.id}>
+              <td className="px-5 py-5 border-b border-gray-200 text-sm">
                 <div className="flex">
                   <div className="ml-3 flex flex-1 justify-start items-center">
                     <p className="text-gray-900 white-space-no-wrap text-base">
@@ -28,17 +28,17 @@ export const Table = ({ rowNames, data }) => {
                   </div>
                 </div>
               </td>
-              <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+              <td className="px-5 py-5 border-b border-gray-200  text-sm">
                 <p className="text-gray-900 white-space-no-wrap text-base">
                   {c.name}
                 </p>
               </td>
-              <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+              <td className="px-5 py-5 border-b border-gray-200 text-sm">
                 <p className="text-gray-900 white-space-no-wrap text-base">
                   {c.quantity}
                 </p>
               </td>
-              <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+              <td className="px-5 py-5 border-b border-gray-200 text-sm">
                 <p className="text-gray-900 white-space-no-wrap text-base">
                   {c.distance}
                 </p>
