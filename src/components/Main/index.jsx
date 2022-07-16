@@ -6,14 +6,17 @@ import { SelectRowFilter } from '../SelectRowFilter'
 import { SelectValueFilter } from '../SelectValueFilter'
 import { Search } from '../Search'
 import useDebounce from '../../utils/useDebounce'
+import { Table } from '../Common/Table'
 
 const URL = '/table'
+
+const rowNames = ['Дата', 'Название', 'Количество', 'Расстояние']
 
 export const Main = () => {
   const [tableData, setTableData] = useState([])
 
   const [currentPage, setCurrentPage] = useState(1)
-  const [itemsPerPage, setItemsPerPage] = useState(10)
+  const [itemsPerPage, _] = useState(10)
   const [listOfPages, setListOfPages] = useState([])
   const [error, setError] = useState(false)
 
@@ -76,9 +79,7 @@ export const Main = () => {
   }, [tableData?.length])
 
   const indexOfLastItem = currentPage * itemsPerPage
-
   const indexOfFirstItem = indexOfLastItem - itemsPerPage
-
   const currentPageItems = tableData.slice(indexOfFirstItem, indexOfLastItem)
 
   let filteredTable = currentPageItems
@@ -129,59 +130,11 @@ export const Main = () => {
         </div>
         <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
           <div className="inline-block min-w-full shadow-md rounded-lg overflow-hidden">
-            <table className="min-w-full leading-normal">
-              <thead>
-                <tr>
-                  <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
-                    Дата
-                  </th>
-                  <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
-                    Название
-                  </th>
-                  <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
-                    Количество
-                  </th>
-                  <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
-                    Расстояние
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {filteredTable.map((c) => {
-                  return (
-                    <tr className="text-base" key={c.id}>
-                      <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                        <div className="flex">
-                          <div className="ml-3 flex flex-1 justify-start items-center">
-                            <p className="text-gray-900 white-space-no-wrap text-base">
-                              {c.date}
-                            </p>
-                          </div>
-                        </div>
-                      </td>
-                      <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                        <p className="text-gray-900 white-space-no-wrap text-base">
-                          {c.name}
-                        </p>
-                      </td>
-                      <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                        <p className="text-gray-900 white-space-no-wrap text-base">
-                          {c.quantity}
-                        </p>
-                      </td>
-                      <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                        <p className="text-gray-900 white-space-no-wrap text-base">
-                          {c.distance}
-                        </p>
-                      </td>
-                    </tr>
-                  )
-                })}
-              </tbody>
-            </table>
+            <Table rowNames={rowNames} data={filteredTable} />
           </div>
         </div>
       </div>
+
       <Pagination pages={{ listOfPages, setCurrentPage, currentPage }} />
     </div>
   )
