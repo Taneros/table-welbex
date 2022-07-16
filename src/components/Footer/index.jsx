@@ -54,6 +54,10 @@ export const Footer = () => {
             <FaCss3 />
             CSS3
           </a>
+          <a href="https://developer.mozilla.org/en-US/docs/Web/HTML">
+            <FaHtml5 />
+            HTML5
+          </a>
         </div>
       </div>
     </div>

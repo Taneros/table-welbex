@@ -48,7 +48,8 @@
 }
 
 .footer .col a {
-  display: inline-block;
+  display: flex;
+  align-items: center;
 }
 
 @media screen and (max-width: 940px) {

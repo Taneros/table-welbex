@@ -7,7 +7,7 @@ export const Search = ({ search }) => {
     <div className="flex justify-center">
       <div className="mb-3 xl:w-96">
         <label htmlFor="search" className="form-label inline-block text-lg">
-          Поиск:
+          Поиск по названию:
         </label>
         <input
           type="text"
