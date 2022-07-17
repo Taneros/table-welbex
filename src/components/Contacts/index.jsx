@@ -25,7 +25,7 @@ export const Contacts = () => {
         </p>
         <br />
         <p>
-          P.S. I had a lot of fun making this test-task for your company. I am
+          P.S. I had a blast making this test-task for your company. I am
           looking forward to hearing from you soon.
         </p>
         <br />
