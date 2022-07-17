@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/table-welbex/static/css/main.c3fe54bc.css",
+    "main.js": "/table-welbex/static/js/main.3a2b2e77.js",
+    "static/media/short-break-send-few-messages.jpg": "/table-welbex/static/media/short-break-send-few-messages.7c707f866bfac4f19fcc.jpg",
+    "static/media/paper-analysis.jpg": "/table-welbex/static/media/paper-analysis.5270e38855a4d9fb5a3c.jpg",
+    "index.html": "/table-welbex/index.html",
+    "main.c3fe54bc.css.map": "/table-welbex/static/css/main.c3fe54bc.css.map",
+    "main.3a2b2e77.js.map": "/table-welbex/static/js/main.3a2b2e77.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c3fe54bc.css",
+    "static/js/main.3a2b2e77.js"
+  ]
+}
