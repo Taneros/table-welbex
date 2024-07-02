@@ -41,5 +41,5 @@
 
 ## Deployment
 
-The project is deployed at . 
-[[https://taneros.github.io/table-welbex/](https://taneros.github.io/table-welbex/)]
+The project is deployed at
+[https://taneros.github.io/table-welbex/](https://taneros.github.io/table-welbex/)
