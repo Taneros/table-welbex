@@ -1,6 +1,6 @@
 # Тестовое Задание: Таблица
 
-**Deploy:** [https://taneros.github.io/table-welbex/](https://taneros.github.io/table-welbex/)
+**Deployment:** [https://taneros.github.io/table-welbex/](https://taneros.github.io/table-welbex/)
 
 ## Technologies Used
 
@@ -38,8 +38,3 @@
 5. Start the backend server:
    ```sh
    yarn serve
-
-## Deployment
-
-The project is deployed at
-[https://taneros.github.io/table-welbex/](https://taneros.github.io/table-welbex/)
