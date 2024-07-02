@@ -1,6 +1,6 @@
-# Задание: Таблица+
+# Тестовое Задание: Таблица
 
-##### Деплой проекта здесь: https://taneros.github.io/table-welbex/
+##### Деплой проекта: https://taneros.github.io/table-welbex/
 
 ##### Запустить проект:
 
